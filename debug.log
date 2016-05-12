@@ -1,0 +1,5 @@
+
+> dcapi@0.0.0 start /home/daishuhua/dcapi
+> node ./bin/www
+
+[0mGET /coordinate/ [32m200 [0m9.705 ms - 39[0m

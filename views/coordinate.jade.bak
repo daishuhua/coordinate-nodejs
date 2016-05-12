@@ -1,0 +1,37 @@
+doctype html
+html
+  meta(charset='utf-8')
+  head
+    script(src='http://api.map.baidu.com/api?v=2.0&ak=fXGsqUfDpToOoYljbaUikk8PwlinYKHc')
+    script(src='/static/javascripts/jquery-1.9.1.min.js')
+    script(type='text/javascript').
+      var index = 0;
+      var result = "";
+      var jsonAddresses = "";
+      var coordinateTbl = "";
+      var map = new BMap.Map("container");
+      var localSearch = new BMap.LocalSearch(map);
+      function getBaiduCoordinate() {
+        /*if (index < jsonAddresses.length) {
+          setTimeout(getBaiduCoordinate, 400);
+        }*/
+        for(var i = 0; i < jsonAddresses.length; i++) {
+          var address = jsonAddresses[index];
+          coordinateTbl.append("<tr><td>" + address + "</td></tr>");
+        }
+        /*var address = jsonAddresses[index];
+        index++;
+*/
+      }
+      $(document).ready(function() {
+        result = $('#result').text();
+        jsonAddresses = JSON.parse(result);
+        coordinateTbl = $('#coordinates');
+
+        getBaiduCoordinate();
+      });
+  body
+    div#container(style='display:none;')
+    div#result=addressNames
+    div
+      table#coordinates
